@@ -1,0 +1,22 @@
+{
+  "name": "mmall_learning-fe",
+  "version": "1.0.0",
+  "description": "mmall_learning front code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fucknamel/mmall_learning-fe.git"
+  },
+  "author": "LKH",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fucknamel/mmall_learning-fe/issues"
+  },
+  "homepage": "https://github.com/fucknamel/mmall_learning-fe#readme",
+  "devDependencies": {
+    "webpack": "^1.15.0"
+  }
+}
