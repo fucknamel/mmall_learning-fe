@@ -4,8 +4,8 @@
   "description": "mmall_learning front code",
   "main": "index.js",
   "scripts": {
-    "dev" : "WEBPACK_DEV=dev webpack-dev-server --inline --port 8088",
-    "dist" : "WEBPACK_DEV=online webpack -p"
+    "dev": "WEBPACK_DEV=dev webpack-dev-server",
+    "dist": "WEBPACK_DEV=online webpack -p"
   },
   "repository": {
     "type": "git",
@@ -20,11 +20,16 @@
   "devDependencies": {
     "css-loader": "^2.1.0",
     "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^3.0.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.23.1",
     "url-loader": "^0.5.8",
     "webpack": "^1.15.0",
     "webpack-dev-server": "^1.16.5"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "hogan": "^1.0.2"
   }
 }
