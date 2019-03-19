@@ -2,7 +2,7 @@
  * @Author: LKH 
  * @Date: 2019-03-09 10:18:44 
  * @Last Modified by: LKH
- * @Last Modified time: 2019-03-19 11:04:35
+ * @Last Modified time: 2019-03-19 17:36:38
  */
 
  var _mm = require('util/mm.js');
@@ -45,6 +45,37 @@
     checkLogin : function(resolve, reject){
         _mm.request({
             url : _mm.getServerUrl('/user/get_user_info.do'),
+            method : 'POST',
+            success : resolve,
+            error : reject
+        });
+    },
+    // 获取用户密码提示问题
+    getQuestion : function(username, resolve, reject){
+        _mm.request({
+            url : _mm.getServerUrl('/user/forget_get_question.do'),
+            data : {
+                username : username
+            },
+            method : 'POST',
+            success : resolve,
+            error : reject
+        });
+    },
+    // 检查密码提示问题答案
+    checkAnswer : function(userInfo, resolve, reject){
+        _mm.request({
+            url : _mm.getServerUrl('/user/forget_check_answer.do'),
+            data : userInfo,
+            method : 'POST',
+            success : resolve,
+            error : reject
+        });
+    },
+    resetPassword : function(userInfo, resolve, reject){
+        _mm.request({
+            url : _mm.getServerUrl('/user/forget_reset_password.do'),
+            data : userInfo,
             method : 'POST',
             success : resolve,
             error : reject
