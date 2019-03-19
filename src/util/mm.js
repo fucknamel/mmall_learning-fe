@@ -2,7 +2,7 @@
  * @Author: LKH 
  * @Date: 2019-02-25 17:32:14 
  * @Last Modified by: LKH
- * @Last Modified time: 2019-02-28 17:34:22
+ * @Last Modified time: 2019-03-18 20:20:02
  */
 
 var Hogan = require('hogan.js');
@@ -81,7 +81,7 @@ var _mm = {
     },
     // 统一登陆处理
     doLogin: function () {
-        window.location.href = './login.html?redirect=' + encodeURIComponent(window.location.href);
+        window.location.href = './user-login.html?redirect=' + encodeURIComponent(window.location.href);
     },
     goHome : function(){
         window.location.href = './index.html';

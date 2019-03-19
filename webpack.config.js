@@ -2,7 +2,7 @@
  * @Author: LKH
  * @Date: 2019-02-18 13:35:11
  * @Last Modified by: LKH
- * @Last Modified time: 2019-03-11 13:04:13
+ * @Last Modified time: 2019-03-19 11:19:22
  */
 var webpack = require("webpack");
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -12,14 +12,14 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev';
 
 // 获取html-webpack-plugin参数的方法 
-var getHtmlConfig = function(name, title){
+var getHtmlConfig = function (name, title) {
   return {
-      template    : './src/view/' + name + '.html',
-      filename    : 'view/' + name + '.html',
-      title       : title,
-      inject      : true,
-      hash        : true,
-      chunks      : ['common', name]
+    template: './src/view/' + name + '.html',
+    filename: 'view/' + name + '.html',
+    title: title,
+    inject: true,
+    hash: true,
+    chunks: ['common', name]
   };
 };
 
@@ -28,12 +28,13 @@ var config = {
   entry: {
     'common': ['./src/page/common/index.js'],
     'index': ["./src/page/index/index.js"],
-    'login': ["./src/page/login/index.js"],
-    'result': ["./src/page/result/index.js"]
+    'user-login': ["./src/page/user-login/index.js"],
+    'user-register': ["./src/page/user-register/index.js"],
+    'result': ["./src/page/result/index.js"],
   },
   output: {
     path: "./dist",
-    publicPath  : '/dist',
+    publicPath: '/dist',
     filename: "js/[name].js"
   },
   externals: {
@@ -41,18 +42,18 @@ var config = {
   },
   module: {
     loaders: [
-      { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader","css-loader") },
+      { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },
       { test: /\.(gif|png|jpg|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=100&name=resource/[name].[ext]' },
-      { test: /\.string$/, loader: 'html-loader'}
+      { test: /\.string$/, loader: 'html-loader' }
     ]
   },
-  resolve :{
-    alias : {
-      node_modules : __dirname + '/node_modules',
-      util : __dirname + '/src/util',
-      page : __dirname + '/src/page',
-      service : __dirname + '/src/service',
-      image : __dirname + '/src/image'
+  resolve: {
+    alias: {
+      node_modules: __dirname + '/node_modules',
+      util: __dirname + '/src/util',
+      page: __dirname + '/src/page',
+      service: __dirname + '/src/service',
+      image: __dirname + '/src/image'
     }
   },
   plugins: [
@@ -65,19 +66,20 @@ var config = {
     new ExtractTextPlugin("css/[name].css"),
     //html模版的处理
     new HtmlWebpackPlugin(getHtmlConfig('index', '首页')),
-    new HtmlWebpackPlugin(getHtmlConfig('login', '用户登录')),
+    new HtmlWebpackPlugin(getHtmlConfig('user-login', '用户登录')),
+    new HtmlWebpackPlugin(getHtmlConfig('user-register', '用户注册')),
     new HtmlWebpackPlugin(getHtmlConfig('result', '操作结果')),
   ],
   devServer: {
     port: 8088,
     inline: true,
-    proxy : {
-        '**/*.do' : {
-            target: 'http://localhost:8080/',
-            changeOrigin : true
-        }
+    proxy: {
+      '**/*.do': {
+        target: 'http://localhost:8080/',
+        changeOrigin: true
+      }
     }
-}
+  }
 };
 
 module.exports = config;

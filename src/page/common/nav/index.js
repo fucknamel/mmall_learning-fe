@@ -2,7 +2,7 @@
  * @Author: LKH 
  * @Date: 2019-03-06 13:12:16 
  * @Last Modified by: LKH
- * @Last Modified time: 2019-03-09 12:33:21
+ * @Last Modified time: 2019-03-19 11:27:31
  */
 
 require('./index.css');
@@ -25,7 +25,7 @@ var nav = {
         });
         // 注册点击事件
         $('.js-register').click(function(){
-            window.location.href = './register.html';
+            window.location.href = './user-register.html';
         })
         // 退出点击事件
         $('.js-logout').click(function(){
@@ -44,6 +44,7 @@ var nav = {
             // do nothing
         });
     },
+    // 加载购物车信息
     loadCartCount : function(){
         _cart.getCartCount(function(res){
             $('.nav .cart-count').text(res || 0);
