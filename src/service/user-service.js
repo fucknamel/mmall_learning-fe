@@ -2,7 +2,7 @@
  * @Author: LKH 
  * @Date: 2019-03-09 10:18:44 
  * @Last Modified by: LKH
- * @Last Modified time: 2019-03-19 17:36:38
+ * @Last Modified time: 2019-03-19 20:40:13
  */
 
  var _mm = require('util/mm.js');
@@ -76,6 +76,15 @@
         _mm.request({
             url : _mm.getServerUrl('/user/forget_reset_password.do'),
             data : userInfo,
+            method : 'POST',
+            success : resolve,
+            error : reject
+        });
+    },
+    // 获取用户信息
+    getUserInfo : function(resolve, reject){
+        _mm.request({
+            url : _mm.getServerUrl('/user/get_user_info.do'),
             method : 'POST',
             success : resolve,
             error : reject
